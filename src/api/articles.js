@@ -11,3 +11,11 @@ export const getUserArticles = async username => {
   })
   return data.articles
 }
+
+export const deleteArticle = async slug => {
+  if (!slug) {
+    return
+  }
+  const { data } = await httpHandler.delete(`articles/${slug}`)
+  return data
+}

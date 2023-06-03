@@ -10,6 +10,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { action as registerAction, Register } from './views/Register'
 import { loader as rootLoader, Dashboard } from './views/Dashboard'
 import { loader as articleLoader, Articles } from './views/Articles'
+import { action as destroyAction } from './views/DestroyArticle'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
         loader: articleLoader,
         path: 'articles',
         element: <Articles />,
+      },
+      {
+        path: 'articles/:articleId/destroy',
+        action: destroyAction,
       },
     ],
   },
