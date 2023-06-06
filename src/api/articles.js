@@ -19,3 +19,13 @@ export const deleteArticle = async slug => {
   const { data } = await httpHandler.delete(`articles/${slug}`)
   return data
 }
+
+export const createArticle = async article => {
+  if (!article) {
+    return
+  }
+  const data = await httpHandler.post('articles', {
+    article,
+  })
+  return data
+}

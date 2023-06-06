@@ -1,5 +1,6 @@
-import { useLoaderData, Outlet, useNavigate } from 'react-router-dom'
+import { useLoaderData, Outlet, useNavigate, NavLink } from 'react-router-dom'
 import { getCurrentUser } from '../api/users'
+import { styled } from '@mui/material/styles'
 import Box from '@mui/material/Box'
 import Drawer from '@mui/material/Drawer'
 import AppBar from '@mui/material/AppBar'
@@ -11,6 +12,7 @@ import ListItem from '@mui/material/ListItem'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
 import Button from '@mui/material/Button'
+import { blue } from '@mui/material/colors'
 
 const drawerWidth = 240
 
@@ -18,6 +20,15 @@ export async function loader() {
   const user = await getCurrentUser()
   return { user }
 }
+
+const CustomListItem = styled(ListItem)(() => ({
+  color: 'white',
+  '&.active': { backgroundColor: blue[500] },
+}))
+
+const CustomListButton = styled(ListItem)(({ theme }) => ({
+  paddingLeft: theme.spacing(6),
+}))
 
 export const Dashboard = () => {
   const { user } = useLoaderData()
@@ -80,16 +91,27 @@ export const Dashboard = () => {
               </ListItemButton>
             </ListItem>
             <List>
-              <ListItem disablePadding>
-                <ListItemButton sx={{ pl: 6 }}>
+              <CustomListItem
+                disablePadding
+                component={NavLink}
+                to={'articles'}
+                end={true}
+              >
+                <CustomListButton>
                   <ListItemText primary={'All Articles'} />
-                </ListItemButton>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemButton sx={{ pl: 6 }}>
+                </CustomListButton>
+              </CustomListItem>
+
+              <CustomListItem
+                disablePadding
+                component={NavLink}
+                to={'articles/create'}
+                end={true}
+              >
+                <CustomListButton>
                   <ListItemText primary={'New Article'} />
-                </ListItemButton>
-              </ListItem>
+                </CustomListButton>
+              </CustomListItem>
             </List>
           </List>
         </Box>
