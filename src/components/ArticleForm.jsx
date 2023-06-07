@@ -1,14 +1,39 @@
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import Grid from '@mui/material/Grid'
-const ArticleForm = () => {
+
+const getDefaultValues = article => {
+  const base = {
+    slug: '',
+    title: '',
+    body: '',
+    description: '',
+  }
+  if (!article) {
+    return base
+  }
+  const { slug, title, body, description } = article
+  return {
+    slug,
+    title,
+    body,
+    description,
+  }
+}
+const ArticleForm = props => {
+  const { article } = props
+  const defaultValues = getDefaultValues(article)
   return (
     <Grid container spacing={2} sx={{ px: 6 }}>
       <Grid xs={8} item>
+        {defaultValues.slug && (
+          <input type="hidden" name="slug" value={defaultValues.slug} />
+        )}
         <TextField
           name="title"
           label="Title"
           variant="outlined"
+          defaultValue={defaultValues.title}
           fullWidth
           sx={{ mb: 4 }}
         />
@@ -16,6 +41,7 @@ const ArticleForm = () => {
           name="description"
           label="Description"
           variant="outlined"
+          defaultValue={defaultValues.description}
           fullWidth
           sx={{ mb: 4 }}
         />
@@ -23,6 +49,7 @@ const ArticleForm = () => {
           name="body"
           label="Body"
           variant="outlined"
+          defaultValue={defaultValues.body}
           fullWidth
           sx={{ mb: 4 }}
           multiline

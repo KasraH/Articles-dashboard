@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
 import TableCell from '@mui/material/TableCell'
@@ -11,6 +12,7 @@ import DeleteModal from './DeleteModal'
 
 export const ArticleTable = props => {
   const { articles } = props
+  const navigate = useNavigate()
   const [deleteModalOpen, setDeleteModalOpen] = useState(false)
   const [deletingArticle, setDeletingArticle] = useState(null)
 
@@ -50,7 +52,7 @@ export const ArticleTable = props => {
                   onDelete={() => {
                     handleOpenDeleteModal(slug)
                   }}
-                  onEdit={() => console.log('Edit')}
+                  onEdit={() => navigate(`/articles/${slug}/edit`)}
                 />
               </TableCell>
             </TableRow>

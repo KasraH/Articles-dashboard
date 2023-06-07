@@ -12,6 +12,11 @@ import { loader as rootLoader, Dashboard } from './views/Dashboard'
 import { loader as articleLoader, Articles } from './views/Articles'
 import { action as destroyAction } from './views/DestroyArticle'
 import { action as createAction, CreateArticle } from './views/CreateArticle'
+import {
+  action as editAction,
+  loader as editLoader,
+  EditArticle,
+} from './views/EditArticle'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -27,6 +32,12 @@ const router = createBrowserRouter([
         action: createAction,
         path: 'articles/create',
         element: <CreateArticle />,
+      },
+      {
+        loader: editLoader,
+        action: editAction,
+        path: 'articles/:slug/edit',
+        element: <EditArticle />,
       },
       {
         path: 'articles/:articleId/destroy',

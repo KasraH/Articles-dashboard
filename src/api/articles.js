@@ -29,3 +29,24 @@ export const createArticle = async article => {
   })
   return data
 }
+export const getArticle = async slug => {
+  if (!slug) {
+    return
+  }
+  const { data } = await httpHandler.get(`articles/${slug}`)
+  return data.article
+}
+
+export const updateArticle = async article => {
+  if (!article) {
+    return
+  }
+  const { slug, ...otherFields } = article
+  if (!slug) {
+    return
+  }
+  const { data } = await httpHandler.put(`articles/${slug}`, {
+    article: otherFields,
+  })
+  return data
+}
