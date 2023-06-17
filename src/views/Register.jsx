@@ -1,7 +1,8 @@
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import Box from '@mui/material/Box'
-import { Form, redirect } from 'react-router-dom'
+import Typography from '@mui/material/Typography'
+import { Form, redirect, Link } from 'react-router-dom'
 import { register } from '../api/users'
 
 export async function action({ request }) {
@@ -30,6 +31,19 @@ export const Register = () => {
         <Button type="submit" variant="contained">
           Register
         </Button>
+        <Typography>
+          Alredy Registered?{' '}
+          <Link
+            to="/login"
+            style={{
+              textDecoration: 'none',
+              color: 'black',
+              fontWeight: 'bold',
+            }}
+          >
+            Login
+          </Link>
+        </Typography>
       </Box>
     </Form>
   )
