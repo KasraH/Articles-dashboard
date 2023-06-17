@@ -8,6 +8,14 @@ export const register = async user => {
   return data.user
 }
 
+export const login = async user => {
+  const { data } = await httpHandler.post('users/login', {
+    user,
+  })
+  window.localStorage.setItem('token', data.user.token)
+  return data.user
+}
+
 export const getCurrentUser = async () => {
   const { data } = await httpHandler.get('user')
   return data.user

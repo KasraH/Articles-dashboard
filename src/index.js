@@ -8,6 +8,7 @@ import '@fontsource/roboto/500.css'
 import '@fontsource/roboto/700.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { action as registerAction, Register } from './views/Register'
+import { action as loginAction, Login } from './views/Login'
 import { loader as rootLoader, Dashboard } from './views/Dashboard'
 import { loader as articleLoader, Articles } from './views/Articles'
 import { action as destroyAction } from './views/DestroyArticle'
@@ -49,6 +50,11 @@ const router = createBrowserRouter([
     path: '/register',
     action: registerAction,
     element: <Register />,
+  },
+  {
+    path: '/login',
+    action: loginAction,
+    element: <Login />,
   },
 ])
 
