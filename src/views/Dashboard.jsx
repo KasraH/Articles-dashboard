@@ -61,7 +61,7 @@ export const Dashboard = () => {
             <Button
               onClick={() => {
                 window.localStorage.removeItem('token')
-                navigate('/register')
+                navigate('/login')
               }}
               variant="outlined"
             >
