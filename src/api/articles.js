@@ -7,8 +7,10 @@ export const getUserArticles = async username => {
   const { data } = await httpHandler.get('articles', {
     params: {
       author: username,
+      limit: 50,
     },
   })
+  console.log(data)
   return data.articles
 }
 

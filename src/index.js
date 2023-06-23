@@ -44,6 +44,11 @@ const router = createBrowserRouter([
         path: 'articles/:articleId/destroy',
         action: destroyAction,
       },
+      {
+        loader: articleLoader,
+        path: 'articles/page/:page',
+        element: <Articles />,
+      },
     ],
   },
   {
