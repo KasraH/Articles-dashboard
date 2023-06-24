@@ -1,4 +1,10 @@
-import { useLoaderData, Outlet, useNavigate, NavLink } from 'react-router-dom'
+import {
+  useLoaderData,
+  Outlet,
+  useNavigate,
+  NavLink,
+  useNavigation,
+} from 'react-router-dom'
 import { getCurrentUser } from '../api/users'
 import { styled } from '@mui/material/styles'
 import Box from '@mui/material/Box'
@@ -13,6 +19,7 @@ import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
 import Button from '@mui/material/Button'
 import { blue } from '@mui/material/colors'
+import LinearProgress from '@mui/material/LinearProgress'
 
 const drawerWidth = 240
 
@@ -33,6 +40,7 @@ const CustomListButton = styled(ListItem)(({ theme }) => ({
 export const Dashboard = () => {
   const { user } = useLoaderData()
   const navigate = useNavigate()
+  const navigation = useNavigation()
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -69,6 +77,9 @@ export const Dashboard = () => {
             </Button>
           </Box>
         </Toolbar>
+        <Box sx={{ width: '100%' }}>
+          {navigation.state === 'loading' && <LinearProgress />}
+        </Box>
       </AppBar>
       <Drawer
         variant="permanent"
