@@ -18,6 +18,7 @@ import {
   loader as editLoader,
   EditArticle,
 } from './views/EditArticle'
+import './translation'
 const router = createBrowserRouter([
   {
     path: '/',
