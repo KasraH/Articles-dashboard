@@ -4,6 +4,7 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import { Form, redirect, Link } from 'react-router-dom'
 import { register } from '../api/users'
+import { useTranslation } from 'react-i18next'
 
 export async function action({ request }) {
   const formData = await request.formData()
@@ -12,6 +13,7 @@ export async function action({ request }) {
   return redirect('/')
 }
 export const Register = () => {
+  const { t } = useTranslation()
   return (
     <Form method="post">
       <Box
@@ -25,14 +27,26 @@ export const Register = () => {
           margin: '16px auto',
         }}
       >
-        <TextField name="email" label="email" variant="outlined" />
-        <TextField name="password" label="password" variant="outlined" />
-        <TextField name="username" label="username" variant="outlined" />
+        <TextField
+          name="email"
+          label={t('register.email')}
+          variant="outlined"
+        />
+        <TextField
+          name="password"
+          label={t('register.password')}
+          variant="outlined"
+        />
+        <TextField
+          name="username"
+          label={t('register.username')}
+          variant="outlined"
+        />
         <Button type="submit" variant="contained">
-          Register
+          {t('register.register')}
         </Button>
         <Typography>
-          Alredy Registered?{' '}
+          {t('register.already registered?')}
           <Link
             to="/login"
             style={{
@@ -41,7 +55,7 @@ export const Register = () => {
               fontWeight: 'bold',
             }}
           >
-            Login
+            {t('register.login')}
           </Link>
         </Typography>
       </Box>
