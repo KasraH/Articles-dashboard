@@ -15,5 +15,13 @@ export default Object.freeze({
       'register now': 'Register Now',
       login: 'Login',
     },
+    dashboard: {
+      'my blog dashboard': 'My Blog Dashboard',
+      'welcome user': 'Welcome {{user}}',
+      logout: 'Logout',
+      posts: 'posts',
+      'all articles': 'All Articles',
+      'new article': 'New Article',
+    },
   },
 })

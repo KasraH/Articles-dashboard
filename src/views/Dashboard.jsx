@@ -20,6 +20,7 @@ import ListItemText from '@mui/material/ListItemText'
 import Button from '@mui/material/Button'
 import { blue } from '@mui/material/colors'
 import LinearProgress from '@mui/material/LinearProgress'
+import { useTranslation } from 'react-i18next'
 
 const drawerWidth = 240
 
@@ -41,6 +42,7 @@ export const Dashboard = () => {
   const { user } = useLoaderData()
   const navigate = useNavigate()
   const navigation = useNavigation()
+  const { t } = useTranslation()
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -62,7 +64,7 @@ export const Dashboard = () => {
               My Blog Dashboard
             </Typography>
             <Typography variant="body" component="span" sx={{ ml: 4 }}>
-              Welcome {user.username}
+              {t('dashboard.welcome user', { user: user.username })}
             </Typography>
           </Box>
           <Box>
@@ -73,7 +75,7 @@ export const Dashboard = () => {
               }}
               variant="outlined"
             >
-              Logout
+              {t('dashboard.logout')}
             </Button>
           </Box>
         </Toolbar>
@@ -98,7 +100,7 @@ export const Dashboard = () => {
           <List sx={{ color: 'white' }}>
             <ListItem disablePadding>
               <ListItemButton sx={{ pointerEvents: 'none', cursor: 'default' }}>
-                <ListItemText primary={'posts'} />
+                <ListItemText primary={t('dashboard.posts')} />
               </ListItemButton>
             </ListItem>
             <List>
@@ -109,7 +111,7 @@ export const Dashboard = () => {
                 end={true}
               >
                 <CustomListButton>
-                  <ListItemText primary={'All Articles'} />
+                  <ListItemText primary={t('dashboard.all articles')} />
                 </CustomListButton>
               </CustomListItem>
 
@@ -120,7 +122,7 @@ export const Dashboard = () => {
                 end={true}
               >
                 <CustomListButton>
-                  <ListItemText primary={'New Article'} />
+                  <ListItemText primary={t('dashboard.new article')} />
                 </CustomListButton>
               </CustomListItem>
             </List>
