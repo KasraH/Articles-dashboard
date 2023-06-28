@@ -1,6 +1,7 @@
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import Grid from '@mui/material/Grid'
+import { useTranslation } from 'react-i18next'
 
 const getDefaultValues = article => {
   const base = {
@@ -23,6 +24,7 @@ const getDefaultValues = article => {
 const ArticleForm = props => {
   const { article } = props
   const defaultValues = getDefaultValues(article)
+  const { t } = useTranslation()
   return (
     <Grid container spacing={2} sx={{ px: 6 }}>
       <Grid xs={8} item>
@@ -56,7 +58,7 @@ const ArticleForm = props => {
           rows={8}
         />
         <Button variant="contained" type="submit">
-          Submit
+          {t('form.submit')}
         </Button>
       </Grid>
     </Grid>

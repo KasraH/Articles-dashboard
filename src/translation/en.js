@@ -23,5 +23,10 @@ export default Object.freeze({
       'all articles': 'All Articles',
       'new article': 'New Article',
     },
+    form: {
+      'new article': 'New Article',
+      'edit article': 'Edit Article',
+      submit: 'submit',
+    },
   },
 })
