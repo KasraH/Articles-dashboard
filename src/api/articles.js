@@ -10,7 +10,6 @@ export const getUserArticles = async username => {
       limit: 50,
     },
   })
-  console.log(data)
   return data.articles
 }
 
